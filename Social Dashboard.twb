@@ -17,217 +17,6 @@
         <range max='#2017-12-11#' min='#2017-01-01#' />
       </column>
     </datasource>
-    <datasource caption='FB Total Fans' inline='true' name='federated.10m0bcd0z8p0vv12kmopa1dphu17' version='10.4'>
-      <connection class='federated'>
-        <named-connections>
-          <named-connection caption='FB - Multicompare - 2017' name='excel-direct.1kzc07z0nlbqb013auxpf00dpzlf'>
-            <connection class='excel-direct' cleaning='yes' compat='no' dataRefreshTime='' filename='K:/dept/DIGITAL E-COMMERCE/E-COMMERCE/Report E-Commerce/socialmedia_dasboard/raw data/FB - Multicompare - 2017.xlsx' interpretationMode='1' password='' server='' validate='no' />
-          </named-connection>
-        </named-connections>
-        <relation all='true' connection='excel-direct.1kzc07z0nlbqb013auxpf00dpzlf' include-siblings='false' is-recursive='false' name='Total Fans+' path='' type='batch-union'>
-          <database-filter>
-            <expression op='='>
-              <expression op='FB - Multicompare*' />
-            </expression>
-          </database-filter>
-          <table-filter>
-            <expression op='='>
-              <expression op='Total Fans' />
-            </expression>
-          </table-filter>
-          <columns>
-            <column datatype='date' name='Date' />
-            <column datatype='string' name='Page' />
-            <column datatype='string' name='URL' />
-            <column datatype='integer' name='Fans' />
-            <column datatype='string' name='Path' />
-            <column datatype='string' name='Sheet' />
-          </columns>
-        </relation>
-        <metadata-records>
-          <metadata-record class='capability'>
-            <remote-name />
-            <remote-type>0</remote-type>
-            <parent-name>[Total Fans+]</parent-name>
-            <remote-alias />
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Date</remote-name>
-            <remote-type>7</remote-type>
-            <local-name>[Date]</local-name>
-            <parent-name>[Total Fans+]</parent-name>
-            <remote-alias>Date</remote-alias>
-            <ordinal>0</ordinal>
-            <local-type>date</local-type>
-            <aggregation>Year</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Page</remote-name>
-            <remote-type>130</remote-type>
-            <local-name>[Page]</local-name>
-            <parent-name>[Total Fans+]</parent-name>
-            <remote-alias>Page</remote-alias>
-            <ordinal>1</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='1' name='LIT_RIT_S2' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>URL</remote-name>
-            <remote-type>130</remote-type>
-            <local-name>[URL]</local-name>
-            <parent-name>[Total Fans+]</parent-name>
-            <remote-alias>URL</remote-alias>
-            <ordinal>2</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='1' name='LIT_RIT_S2' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Fans</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[Fans]</local-name>
-            <parent-name>[Total Fans+]</parent-name>
-            <remote-alias>Fans</remote-alias>
-            <ordinal>3</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Path</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[Path]</local-name>
-            <parent-name>[Total Fans+]</parent-name>
-            <remote-alias>Path</remote-alias>
-            <ordinal>4</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='1' name='LIT_RIT_S2' />
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Sheet</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[Sheet]</local-name>
-            <parent-name>[Total Fans+]</parent-name>
-            <remote-alias>Sheet</remote-alias>
-            <ordinal>5</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <contains-null>true</contains-null>
-            <collation flag='1' name='LIT_RIT_S2' />
-          </metadata-record>
-        </metadata-records>
-      </connection>
-      <aliases enabled='yes' />
-      <column caption='Calculation1' datatype='date' name='[Calculation_198439879229530115]' role='dimension' type='ordinal'>
-        <calculation class='tableau' formula='[Date]+10' />
-      </column>
-      <column caption='% Growth' datatype='real' name='[Calculation_732960852253671430]' role='measure' type='quantitative'>
-        <calculation class='tableau' formula='max([Fans])/min([Fans])-1' />
-      </column>
-      <column caption='Date Range' datatype='boolean' name='[Calculation_868350316291588096]' role='dimension' type='nominal'>
-        <calculation class='tableau' formula='[Date]&gt;=[Parameters].[Start Date (copy)] and [Date] &lt;= [Parameters].[Parameter 3]' />
-      </column>
-      <column datatype='integer' default-format='n#,##0,,.00M;-#,##0,,.00M' name='[Fans]' role='measure' type='quantitative' />
-      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
-        <calculation class='tableau' formula='1' />
-      </column>
-      <column datatype='string' name='[Page]' role='dimension' type='nominal' />
-      <column-instance column='[Page]' derivation='None' name='[none:Page:nk]' pivot='key' type='nominal' />
-      <layout dim-ordering='alphabetic' dim-percentage='0.455497' measure-ordering='alphabetic' measure-percentage='0.308901' parameter-percentage='0.235602' show-structure='true' />
-      <style>
-        <style-rule element='mark'>
-          <encoding attr='color' field='[none:Page:nk]' type='palette'>
-            <map to='#4e79a7'>
-              <bucket>&quot;Prada&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;Hermès&quot;</bucket>
-            </map>
-            <map to='#76b7b2'>
-              <bucket>&quot;Gucci&quot;</bucket>
-            </map>
-            <map to='#79706e'>
-              <bucket>&quot;Burberry&quot;</bucket>
-            </map>
-            <map to='#9c755f'>
-              <bucket>&quot;Saint Laurent&quot;</bucket>
-            </map>
-            <map to='#b07aa1'>
-              <bucket>&quot;Miu Miu&quot;</bucket>
-            </map>
-            <map to='#bab0ac'>
-              <bucket>&quot;Dolce &amp; Gabbana&quot;</bucket>
-            </map>
-            <map to='#d37295'>
-              <bucket>&quot;Fendi&quot;</bucket>
-            </map>
-            <map to='#d4a6c8'>
-              <bucket>&quot;Versace&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;Valentino&quot;</bucket>
-            </map>
-            <map to='#edc948'>
-              <bucket>&quot;Louis Vuitton&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;Dior&quot;</bucket>
-            </map>
-            <map to='#fabfd2'>
-              <bucket>&quot;Giorgio Armani&quot;</bucket>
-            </map>
-            <map to='#ff9d9a'>
-              <bucket>&quot;BALENCIAGA&quot;</bucket>
-            </map>
-            <map to='#ff9da7'>
-              <bucket>&quot;CHANEL&quot;</bucket>
-            </map>
-          </encoding>
-        </style-rule>
-      </style>
-      <semantic-values>
-        <semantic-value key='[Country].[Name]' value='&quot;Italy&quot;' />
-      </semantic-values>
-      <date-options start-of-week='monday' />
-      <default-sorts>
-        <sort class='manual' column='[none:Page:nk]' direction='ASC'>
-          <dictionary>
-            <bucket>&quot;Prada&quot;</bucket>
-            <bucket>&quot;Miu Miu&quot;</bucket>
-            <bucket>&quot;Louis Vuitton&quot;</bucket>
-            <bucket>&quot;Dior&quot;</bucket>
-            <bucket>&quot;CHANEL&quot;</bucket>
-            <bucket>&quot;Burberry&quot;</bucket>
-            <bucket>&quot;Gucci&quot;</bucket>
-            <bucket>&quot;Dolce &amp; Gabbana&quot;</bucket>
-            <bucket>&quot;Giorgio Armani&quot;</bucket>
-            <bucket>&quot;Versace&quot;</bucket>
-            <bucket>&quot;Saint Laurent&quot;</bucket>
-            <bucket>&quot;Valentino&quot;</bucket>
-            <bucket>&quot;Fendi&quot;</bucket>
-            <bucket>&quot;Hermès&quot;</bucket>
-            <bucket>&quot;BALENCIAGA&quot;</bucket>
-          </dictionary>
-        </sort>
-      </default-sorts>
-      <datasource-dependencies datasource='Parameters'>
-        <column caption='Date End' datatype='date' default-format='*dd/mm/yy' name='[Parameter 3]' param-domain-type='any' role='measure' type='quantitative' value='#2017-12-11#'>
-          <calculation class='tableau' formula='#2017-12-11#' />
-        </column>
-        <column caption='Date Start' datatype='date' default-format='*dd/mm/yy' name='[Start Date (copy)]' param-domain-type='range' role='measure' type='quantitative' value='#2017-11-11#'>
-          <calculation class='tableau' formula='#2017-11-11#' />
-          <range max='#2017-12-11#' min='#2017-01-01#' />
-        </column>
-      </datasource-dependencies>
-    </datasource>
     <datasource caption='FB Posts' inline='true' name='federated.1cd51wn10uzkpr17pbs2101b3oh2' version='10.4'>
       <connection class='federated'>
         <named-connections>
@@ -3260,6 +3049,217 @@
             <bucket>&quot;Christian Dior&quot;</bucket>
             <bucket>&quot;CHANEL&quot;</bucket>
             <bucket>&quot;GUCCI&quot;</bucket>
+          </dictionary>
+        </sort>
+      </default-sorts>
+      <datasource-dependencies datasource='Parameters'>
+        <column caption='Date End' datatype='date' default-format='*dd/mm/yy' name='[Parameter 3]' param-domain-type='any' role='measure' type='quantitative' value='#2017-12-11#'>
+          <calculation class='tableau' formula='#2017-12-11#' />
+        </column>
+        <column caption='Date Start' datatype='date' default-format='*dd/mm/yy' name='[Start Date (copy)]' param-domain-type='range' role='measure' type='quantitative' value='#2017-11-11#'>
+          <calculation class='tableau' formula='#2017-11-11#' />
+          <range max='#2017-12-11#' min='#2017-01-01#' />
+        </column>
+      </datasource-dependencies>
+    </datasource>
+    <datasource caption='FB Total Fans' inline='true' name='federated.10m0bcd0z8p0vv12kmopa1dphu17' version='10.4'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='FB - Multicompare - 2017' name='excel-direct.1kzc07z0nlbqb013auxpf00dpzlf'>
+            <connection class='excel-direct' cleaning='yes' compat='no' dataRefreshTime='' filename='K:/dept/DIGITAL E-COMMERCE/E-COMMERCE/Report E-Commerce/socialmedia_dasboard/raw data/FB - Multicompare - 2017.xlsx' interpretationMode='1' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <relation all='true' connection='excel-direct.1kzc07z0nlbqb013auxpf00dpzlf' include-siblings='false' is-recursive='false' name='Total Fans+' path='' type='batch-union'>
+          <database-filter>
+            <expression op='='>
+              <expression op='FB - Multicompare*' />
+            </expression>
+          </database-filter>
+          <table-filter>
+            <expression op='='>
+              <expression op='Total Fans' />
+            </expression>
+          </table-filter>
+          <columns>
+            <column datatype='date' name='Date' />
+            <column datatype='string' name='Page' />
+            <column datatype='string' name='URL' />
+            <column datatype='integer' name='Fans' />
+            <column datatype='string' name='Path' />
+            <column datatype='string' name='Sheet' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Total Fans+]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[Total Fans+]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Page</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Page]</local-name>
+            <parent-name>[Total Fans+]</parent-name>
+            <remote-alias>Page</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LIT_RIT_S2' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>URL</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[URL]</local-name>
+            <parent-name>[Total Fans+]</parent-name>
+            <remote-alias>URL</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LIT_RIT_S2' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Fans</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Fans]</local-name>
+            <parent-name>[Total Fans+]</parent-name>
+            <remote-alias>Fans</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Path</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Path]</local-name>
+            <parent-name>[Total Fans+]</parent-name>
+            <remote-alias>Path</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LIT_RIT_S2' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sheet</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Sheet]</local-name>
+            <parent-name>[Total Fans+]</parent-name>
+            <remote-alias>Sheet</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LIT_RIT_S2' />
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Calculation1' datatype='date' name='[Calculation_198439879229530115]' role='dimension' type='ordinal'>
+        <calculation class='tableau' formula='[Date]+10' />
+      </column>
+      <column caption='% Growth' datatype='real' name='[Calculation_732960852253671430]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='max([Fans])/min([Fans])-1' />
+      </column>
+      <column caption='Date Range' datatype='boolean' name='[Calculation_868350316291588096]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='[Date]&gt;=[Parameters].[Start Date (copy)] and [Date] &lt;= [Parameters].[Parameter 3]' />
+      </column>
+      <column datatype='integer' default-format='n#,##0,,.00M;-#,##0,,.00M' name='[Fans]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column datatype='string' name='[Page]' role='dimension' type='nominal' />
+      <column-instance column='[Page]' derivation='None' name='[none:Page:nk]' pivot='key' type='nominal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.492007' measure-ordering='alphabetic' measure-percentage='0.300178' parameter-percentage='0.207815' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:Page:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;Prada&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Hermès&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Gucci&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Burberry&quot;</bucket>
+            </map>
+            <map to='#9c755f'>
+              <bucket>&quot;Saint Laurent&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Miu Miu&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Dolce &amp; Gabbana&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Fendi&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Versace&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Valentino&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;Louis Vuitton&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Dior&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Giorgio Armani&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;BALENCIAGA&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;CHANEL&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Italy&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <default-sorts>
+        <sort class='manual' column='[none:Page:nk]' direction='ASC'>
+          <dictionary>
+            <bucket>&quot;Prada&quot;</bucket>
+            <bucket>&quot;Miu Miu&quot;</bucket>
+            <bucket>&quot;Louis Vuitton&quot;</bucket>
+            <bucket>&quot;Dior&quot;</bucket>
+            <bucket>&quot;CHANEL&quot;</bucket>
+            <bucket>&quot;Burberry&quot;</bucket>
+            <bucket>&quot;Gucci&quot;</bucket>
+            <bucket>&quot;Dolce &amp; Gabbana&quot;</bucket>
+            <bucket>&quot;Giorgio Armani&quot;</bucket>
+            <bucket>&quot;Versace&quot;</bucket>
+            <bucket>&quot;Saint Laurent&quot;</bucket>
+            <bucket>&quot;Valentino&quot;</bucket>
+            <bucket>&quot;Fendi&quot;</bucket>
+            <bucket>&quot;Hermès&quot;</bucket>
+            <bucket>&quot;BALENCIAGA&quot;</bucket>
           </dictionary>
         </sort>
       </default-sorts>
@@ -8028,7 +8028,10 @@
       </layout-options>
       <table>
         <view>
-          <datasources />
+          <datasources>
+            <datasource caption='FB Total Fans' name='federated.10m0bcd0z8p0vv12kmopa1dphu17' />
+            <datasource name='Parameters' />
+          </datasources>
           <datasource-dependencies datasource='Parameters'>
             <column caption='Date End' datatype='date' default-format='*dd/mm/yy' name='[Parameter 3]' param-domain-type='any' role='measure' type='quantitative' value='#2017-12-11#'>
               <calculation class='tableau' formula='#2017-12-11#' />
@@ -8038,6 +8041,17 @@
               <range max='#2017-12-11#' min='#2017-01-01#' />
             </column>
           </datasource-dependencies>
+          <datasource-dependencies datasource='federated.10m0bcd0z8p0vv12kmopa1dphu17'>
+            <column caption='Date Range' datatype='boolean' name='[Calculation_868350316291588096]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='[Date]&gt;=[Parameters].[Start Date (copy)] and [Date] &lt;= [Parameters].[Parameter 3]' />
+            </column>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_868350316291588096]' derivation='None' name='[none:Calculation_868350316291588096:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Date]' derivation='Month-Trunc' name='[tmn:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <slices>
+            <column>[federated.10m0bcd0z8p0vv12kmopa1dphu17].[none:Calculation_868350316291588096:nk]</column>
+          </slices>
           <aggregation value='true' />
         </view>
         <style />
@@ -8049,7 +8063,7 @@
             <mark class='Automatic' />
           </pane>
         </panes>
-        <rows />
+        <rows>[federated.10m0bcd0z8p0vv12kmopa1dphu17].[tmn:Date:ok]</rows>
         <cols />
       </table>
     </worksheet>
@@ -16622,35 +16636,7 @@
       </zones>
     </dashboard>
   </dashboards>
-  <windows source-height='177'>
-    <window class='worksheet' name='Param Setup'>
-      <cards>
-        <edge name='left'>
-          <strip size='250'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='56'>
-            <card type='columns' />
-          </strip>
-          <strip size='56'>
-            <card type='rows' />
-          </strip>
-          <strip size='45'>
-            <card type='title' />
-          </strip>
-        </edge>
-        <edge name='right'>
-          <strip size='250'>
-            <card mode='datetime' param='[Parameters].[Start Date (copy)]' type='parameter' />
-            <card mode='datetime' param='[Parameters].[Parameter 3]' type='parameter' />
-          </strip>
-        </edge>
-      </cards>
-    </window>
+  <windows saved-dpi-scale-factor='1.25' source-height='170'>
     <window class='dashboard' maximized='true' name='Cover'>
       <viewpoints />
       <active id='-1' />
@@ -17132,6 +17118,41 @@
     <window class='dashboard' name='SHEET DIVIDER'>
       <viewpoints />
       <active id='-1' />
+    </window>
+    <window class='worksheet' name='Param Setup'>
+      <cards>
+        <edge name='left'>
+          <strip size='312'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='56'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='312'>
+            <card mode='datetime' param='[Parameters].[Start Date (copy)]' type='parameter' />
+            <card mode='datetime' param='[Parameters].[Parameter 3]' type='parameter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.10m0bcd0z8p0vv12kmopa1dphu17].[yr:Date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
     </window>
     <window class='worksheet' name='FB - Engagement Trend by Post_sheet'>
       <cards>
@@ -30831,19 +30852,93 @@
       Mte0lrg2qlY1UNpcsdTNuIy3roJ4PL6obUw31G9oRVPypAphY9INKmztfwFhaqOk3+NgtgAA
       AABJRU5ErkJggg==
     </thumbnail>
-    <thumbnail height='192' name='Param Setup' width='192'>
-      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
-      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
-      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
-      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
-      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
-      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
-      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
-      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
-      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
-      fBUOM1sAAAAASUVORK5CYII=
+    <thumbnail height='64' name='Param Setup' width='184'>
+      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
     </thumbnail>
     <thumbnail height='192' name='Post Strategy - Facebook' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
